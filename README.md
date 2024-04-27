@@ -3,7 +3,7 @@
 Welcome to Plural, your go-to directory for Progressive Web Apps (PWAs)! 
 Plural is a Python Django-based project designed to provide users with a centralized platform to discover, explore, and contribute to the world of PWAs.
 ##
-![reference image](https://res.cloudinary.com/read-cv/image/upload/c_fill,h_90,w_160/dpr_1.0/v1/1/profileItems/30Rfxe5T1YQE0D6cZyyTXE4mJq82/txYooLt7FWALP0VBciUW/d12d27b7-2e27-4e52-9888-49d2ca0d45cf.png?_a=DATAdtAAZAA0)
+![reference image](https://raw.githubusercontent.com/berrydzhobs/Plural/main/screenshot.png)
 ##
 
 Features
