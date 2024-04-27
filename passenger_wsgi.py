@@ -1,0 +1,1 @@
+from Plural.wsgi import application
