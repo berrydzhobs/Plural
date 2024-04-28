@@ -1,0 +1,224 @@
+{% extends 'Main/Base/base.html' %}
+
+{% block title %}  Edit Profile {% endblock %}
+
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+
+
+<div uk-height-viewport="" class="uk-height-viewport pt-0" style="min-height: calc(100vh);">
+
+
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}  
+
+
+
+
+<style type="text/css">
+    .cnt{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+    .cnt-room-left{
+        height: 100vh;
+
+    }
+    .cnt-room-right{
+        height: 100vh;
+        
+    }
+</style>
+
+<div class="cnt">
+
+    <div class="cnt-room-left bg-white border-r">
+
+                <header class="main-header  pdw   uk-flex uk-flex-middle   ">
+        <div class="uk-width-1-1 ">
+      <div class="section-header uk-flex uk-flex-middle pt-0 pb-0">
+          <div class="section-header-left uk-flex uk-flex-middle">
+        
+
+                        <p class="text-black uk-logo">Edit Profile</p>
+
+                        
+ 
+          </div>
+          <div class="section-header-right uk-flex uk-flex-middle">
+             <a onclick="window.history.go(-1); return false;" class="mr-3" uk-tooltip="title:Back; pos: bottom ;offset:7;" title="" aria-expanded="false">
+                <svg viewBox="0 0 24 24" color="#000000" fill="#000000" width="24" height="24" role="img" class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-1yevf0r r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-meisx5"><g><path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"></path></g></svg>
+            </a>
+          </div>
+          </div>
+      </div>
+    </header>
+        
+
+
+
+    <!-- chats -->
+
+    
+
+<div class="">
+
+    <div class="aside-pr ">
+    
+
+    
+          <div class="uk-container pb-0">
+
+  
+
+          <!-- sidebar header -->
+            <div class="post-comments-single">
+                                    <div class="post-comment-avatar uk-hidden">
+                                        <img src="{{ user.profile.picture.url }}" alt="">
+                                    </div>
+                                    <div class="post-comment-text uk-width-1-1 ml-0">
+
+                                        {% csrf_token %}
+  {{ user_form.as_p }}
+  {{ profile_form.as_p }}
+
+                                    </div>
+                                </div>
+        </div>
+    
+</div>
+
+</div>
+
+        
+    </div>
+
+    <div class="cnt-room-left bg-white">
+        
+<style type="text/css">
+    .crt-footer {
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 2;
+    bottom: 0;
+    display: flex;
+    height: 70px;
+    padding: 0 15px;
+    z-index: 500;
+}
+</style>
+
+      <style type="text/css">
+        input{
+    max-width: 100%;
+    width: 100%;
+    border: 0 none;
+    padding: 0px 0px;
+    background: #fff;
+    color: #666;
+    /* font-weight: 600; */
+    border: 2px solid #eceff5;
+    border-radius: 7px;
+    transition: 0.2s ease-in-out;
+    transition-property: color, background-color, border;
+
+    padding-left: 7px !important;
+    padding-right: 75px !important;
+
+        height: 43px;
+    vertical-align: middle;
+    display: inline-block;
+        }
+      </style>
+
+
+    <div class="bg-white">
+<div class="side-pl uk-flex-middle uk-flex uk-height-viewport  bg-pH" style="margin-top: -15px;">
+
+    <div class="uk-width-2-5@m m-auto" style="padding-top: 17px;">
+        <div class="uk-container  uk-text-center">
+
+            <div class="  uk-flex uk-flex-middle rounded uk-text-center">
+                        <div uk-form-custom class="m-auto">
+                            
+                        <div class="embed-video uk-background-cover rounded-circle" style="background-image: url('{{ user.profile.picture.url }}');">
+
+                        <img id="output_image" class="rounded-circle is_app uk-hidden" src="{{ user.profile.picture.url }}" />
+
+                            
+                        </div>
+
+                        <div class="uk-margin" uk-margin>
+        <div uk-form-custom="target: true">
+            <input class="uk-input" type="file" name="picture" accept="image/*" id="id_picture">
+            <input class="uk-input uk-form-width-medium" type="text" placeholder="New profile picture" disabled>
+        </div>
+    </div>
+
+                        
+
+
+                    </div>
+                        
+                    </div>
+
+
+                        
+                    </div>
+    </div>
+  
+          
+
+</div>
+
+
+
+    <footer class="crt-footer  bg-white  ">
+
+        <div class="section-header uk-width-1-1">
+
+            <div class="section-header-left">
+            <a onclick="window.history.go(-1); return false;" title="Cancel" >
+            <button type="submit" class="bg-pH button medium">
+                <span class="uk-navbar-item uk-icon i_center"  aria-expanded="false">
+            <i class="mdi mdi-arrow-left icon-web"></i>
+            </span>
+            </button>
+            </a>
+            </div>
+
+            <div class="section-header-right i_center">
+            <button type="submit" class="primary button medium">
+            <a class="uk-navbar-item uk-icon"  aria-expanded="false" title="Save">
+            <i class="mdi-check mdi icon-web text-white"></i>
+            </a>
+            </button>
+            </div>
+
+        </div>
+        
+    </footer> 
+</div>
+
+
+    </div>
+    
+        
+    </div>
+
+</form> 
+    
+</div>
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}

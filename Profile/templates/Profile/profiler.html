@@ -1,0 +1,179 @@
+{% extends 'Main/Base/base.html' %}
+
+{% block title %} {{ profile.user.first_name }} (@{{ profile.user.username }}) | Strerium {% endblock %}
+
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+
+
+ 
+                            <div class="uk-scrollspy-inview uk-animation-fade" style="margin-bottom: 17px;">
+
+                                <div class="uk-width-1-1@m uk-box-shadow-small rounded uk-flex uk-flex-middle bg-dark" style="margin-bottom: 20px;min-height: 200px;">
+    <div class="m-auto uk-padding">
+    
+      <h3 class="
+                                         {% if category.name|length < 7 %}
+                                         uk-heading-xlarge
+                                         {% elif category.name|length < 25 %}
+                                         uk-heading-large
+                                         {% elif category.name|length < 31 %}
+                                         uk-text-xxlarge
+                                         {% elif category.name|length < 58 %}
+                                         uk-text-xlarge
+                                         {% else %}
+                                         uk-text-large
+                                         {% endif %}
+                                         uk-text-bold uk-h1@m  uk-margin-large-top@m qt-font-n   text-white font-writer" style="color:{% for color in color %}{{color.color}}{% endfor %};">
+                                                  {{ profile.user.first_name |truncatechars:70 }} 
+                                                </h3>
+
+    </div>
+                     
+
+</div>
+
+
+
+                                                <p class="uk-text-center" style="color:{{ category.color }};">
+                                                    {{ category.description }}
+                                                </p>
+<div class="bg-dotted" style="height: 12px;">
+    
+</div>
+
+
+
+                            </div>
+
+
+
+    <style type="text/css">
+        .profile-picture{
+            width: 100%;
+        }
+        .profile-covered{
+            width: auto;
+            padding-top: 10px;
+            padding-right: 10px;
+        }
+
+        .pro_round {
+            border-radius:2px !important;
+        }
+
+        @media only screen and (max-width: 1024px) {
+         
+         .profile-picture{
+            margin-top: -35pt !important;
+            margin-left: 7pt;
+        }
+
+        .profile-picture img{
+            height:7pc !important;
+            width: 7pc !important;
+            border: 6pt solid #ffffff !important;
+        }
+
+        .pro_round {
+            border-radius: 0px !important;
+        }
+
+        .pro_up{
+            margin-top: -15px;
+        }
+}
+
+    </style>
+
+
+     <section class="feed">
+        {% if posts %}
+
+                            {% if request.resolver_match.url_name == 'profile' %}
+
+                            <div class="uk-child-width-1-1@m  uk-child-width-1-1@s uk-flex uk-flex-center  uk-child-width-1-1 uk-grid-small  uk-grid" uk-grid="" uk-height-match="target: > div > .uk-card; row: false" >
+
+                            {% include 'Profile/Include/content.html' %}
+
+                            </div>
+
+                            {% elif request.resolver_match.url_name == 'profile_watch' %}
+                            
+                            {% include 'Profile/Include/videos.html' %}
+
+                            {% elif request.resolver_match.url_name == 'profile_listen' %}
+
+                            {% include 'Profile/Include/audios.html' %}
+
+                            {% elif request.resolver_match.url_name == 'profile_list' %}
+                            <section class="feed" id="film-list">
+                              <ul class="feed-list">
+
+                            {% include 'Profile/Include/feed.html' %}
+                              </ul>
+                             </section>
+
+                            {% endif %}
+
+        
+
+        
+
+        
+
+
+
+                    <!--Else if statement for if user has no post-->
+                    {% else %}
+
+                    {% if request.user == profile.user %} 
+                         <div class="wrapper">
+                        <div class="uk-card uk-width-expand uk-card-body">
+                            <div class="uk-text-center text-info">
+                                <i class=" mdi mdi-shape-square-plus icon-xlarge"></i>
+                            </div>
+                           <h3 class="uk-text-center">No Content Yet</h3>
+                           <div class="">
+                           <p class="uk-text-center uk-text-meta"><b>Once you create some. you will start seeing them here</b></p>
+                           </div>
+                           </div>
+                           </div>
+                    {% else %} 
+                    <div class="wrapper">
+                        <div class="uk-card uk-width-expand uk-card-body">
+
+                            {% if request.resolver_match.url_name == 'profile' %}
+                            <div class="uk-text-center text-info">
+                                <i class=" mdi mdi-view-carousel icon-xlarge"></i>
+                            </div>
+                            <h3 class="uk-text-center">No Post Yet</h3>
+                            {% elif request.resolver_match.url_name == 'profile_listen' %}
+                            <div class="uk-text-center text-info">
+                                <i class=" mdi mdi-image-filter-hdr icon-xlarge"></i>
+                            </div>
+                            <h3 class="uk-text-center">No Photo Post Yet</h3>
+                            {% elif request.resolver_match.url_name == 'profile_watch' %}
+                            <div class="uk-text-center text-info">
+                                <i class=" mdi mdi-film icon-xlarge"></i>
+                            </div>
+                            <h3 class="uk-text-center">No Video Post Yet</h3>
+                            {% elif request.resolver_match.url_name == 'profile_list' %}
+                            <div class="uk-text-center text-info">
+                                <i class=" mdi mdi-book-open-variant icon-xlarge"></i>
+                            </div>
+                            <h3 class="uk-text-center">No Post Yet</h3>
+                            {% endif %}
+                            
+                           
+                           <div class="">
+                           <p class="uk-text-center uk-text-meta"><b>Come back later , to see {{ profile.user.first_name }} `s photoes and videos</b></p>
+                           </div>
+                           </div>
+                           </div>
+                    {% endif %}
+                    {% endif %}
+    </section>
+{% endblock %}
