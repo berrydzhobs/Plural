@@ -1,0 +1,50 @@
+{% extends 'Main/Base/base.html' %}
+
+{% block title %} Search {% endblock %}
+
+{% block content %}
+{% load static %}
+
+ 
+<!-- style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #212529 60%);" -->
+
+<div  class="uk-height-small bg-light-yellow rounded uk-flex uk-flex-middle" >
+    <div class="uk-width-1-1 uk-container ">
+
+        <div class="uk-width-2-3 m-auto">
+         
+         <form role="form" action="
+    {% if request.resolver_match.url_name == 'notesearch' %}
+        {% url 'notesearch' %}
+        {% elif request.resolver_match.url_name == 'videosearch' %}
+        {% url 'videosearch' %}
+        {% elif request.resolver_match.url_name == 'audiosearch' %}
+        {% url 'audiosearch' %}
+        {% elif request.resolver_match.url_name == 'usersearch' %}
+        {% url 'usersearch' %}
+        {% elif request.resolver_match.url_name == 'imagesearch' %}
+        {% url 'imagesearch' %}
+        {% else %}
+        {% url 'mainsearch' %}
+        {% endif %}
+    " method="GET">
+                    <div class="uk-form-group ">
+                        <div class="uk-position-relative uk-text-meta">
+                            <span class="uk-form-icon">
+                                <i class="uil-search"></i>
+                            </span>
+                             <span class="uk-form-icon-ll">
+                                <i class="mdi mdi-microphone icon-tiny is_icon_app"></i>
+                            </span>
+
+
+                            <input class="uk-input uk-width-1-1 {% if query %} text-black uk-text-bold {% endif %}   uk-form-medium uk-text-meta  rounded bg-white" type="text" placeholder="Search for web applications ..." name="qt" required="" value="{{query}}"  autocomplete="none" x-webkit-speech="" style="border:none;">
+                            
+                        </div>
+                    </div>
+                    </form>
+                </div>
+</div>
+</div>
+
+{% endblock %}
