@@ -1,0 +1,195 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+
+{% block content %}
+{% load static %}
+
+
+
+<div class="uk-container uk-text-center">
+
+
+  <div class="uk-card-body iq-border rounded mb-7">
+                            <div class="uk-text-center">
+                                <i class=" mdi mdi-account-convert icon-large"></i>
+                            </div>
+                           <h5 class="uk-text-center text-black">Wanna open Strerium account ?</h5>
+                           <div class="">
+                           <p class="uk-text-center uk-text-meta"><b>
+                               We are constantly improving this functionality, if you are looking to signup consider option below:
+                           </b></p>
+                           </div>
+                           </div>
+  
+
+        <p class="uk-text-center my-4" style="padding-top: 12px; padding-bottom: 12px;">
+                        Consider this path
+                    <a href="{% url 'register' %}" >
+                    <label class="text-blue">to continue</label>
+                    </a>
+                    </p>
+                    </div>
+        
+
+
+<div id="language" class="uk-animation-slide-bottom uk-background-cover uk-flex uk-flex-center uk-open uk-hidden" >
+   <div class="rounded uk-margin-auto-vertical uk-open" >
+    
+    <div class="rounded uk-open" >
+
+       
+  <div class="uk-width-1-1@m m-auto bg-white pt-0 rounded-lg uk-padding-large">
+
+    <div class="uk-flex uk-flex-center" style="padding-top: 10pt;">
+      <p class="uk-text-large">{% trans "Create a Strerium Account" %}</p>
+    </div>
+
+
+
+     <div class=" uk-animation-slide-bottom-medium ">
+
+                <div class="my-4 ">
+
+
+
+
+                    {% for message in messages %}
+                    <div class="uk-alert-primary rounded" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p class="text-red uk-text-center uk-text-bold">Login Failed</p>
+                    <p class="uk-text-meta">
+                        <ul class="uk-text-small">
+                    <li><span>Is <b>Caps Lock</b> on?</span></li>
+                    <li><span>Maybe you are using the wrong <b>input language</b>? (e.g. German vs. English)</span></li>
+                    <li><span>Try typing your password in a text editor and then <b>copying and pasting</b> it into the "Password" field.</span></li>
+                    <li><span>Check if the username you are typing is as it should be <b>(e.g. @Jobs shouldbe @Jobs <span class="uk-text-danger">not</span> @job or @JOB</b> Username should always be as it was registered as.</span></li>
+                  </ul>
+                    <a href="{% url 'password_reset' %}" class="text-white">Trouble logging in ?</a></p>
+                    </div>
+                    {% endfor %}
+
+
+
+                    
+
+
+                    
+
+
+      <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+
+      {{ form.as_p }}
+
+
+      <style type="text/css">
+        input{
+    max-width: 100%;
+    width: 100%;
+    border: 0 none;
+    padding: 0px 0px;
+    background: #fff;
+    color: #666;
+    /* font-weight: 600; */
+    border: 2px solid #eceff5;
+    border-radius: 7px;
+    transition: 0.2s ease-in-out;
+    transition-property: color, background-color, border;
+
+    padding-left: 7px !important;
+    padding-right: 75px !important;
+
+        height: 43px;
+    vertical-align: middle;
+    display: inline-block;
+        }
+      </style>
+
+
+
+
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+                    
+
+                    <button type="submit" class="button info rounded-lg large block mb-4"> {% trans "Sign up" %} </button>
+                    </form>
+                    
+
+                    
+                </div>
+
+                <div class="my-4 uk-text-center" style="padding-top: 20pt;">
+            <p class="my-2">Already have an account?
+            <a href="{% url 'account_login' %}" class="text-blue">Sign in !</a> </p>
+            </div>
+            </div>  
+
+
+
+
+
+
+
+
+
+
+<div class="uk-padding-small iq-border rounded-lg uk-hidden uk-text-center" style="margin-top: 30pt!important; margin-bottom: 20pt !important;">
+  
+
+
+
+
+
+
+    <p>
+    {% blocktrans with site.name as site_name %}
+      Sign up with:
+    {% endblocktrans %}
+    </p>
+
+<div class="uk-flex uk-flex-center" style="padding-bottom: 10px; padding-top: 7px;">
+<div class="uk-child-width-1-4 uk-child-width-1-4@m uk-text-center uk-grid-medium  uk-grid" uk-grid>
+    <div>
+      <a title="Google" class="socialaccount_provider google" href="/accounts/google/signup/?process=signup">
+        <div class="is_web iq-border">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 48 48" class="LgbsSe-Bz112c"><g><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></g></svg>
+        </div>
+      </a>
+    </div>
+    <div>
+      <a title="Apple" class="socialaccount_provider apple" href="/accounts/apple/signup/?process=signup">
+        <div class="is_web iq-border"><i class="mdi mdi-apple icon-web"></i></div>
+      </a>
+    </div>
+    <div>
+      <a title="Facebook" class="socialaccount_provider facebook" href="/accounts/facebook/signup/?process=signup">
+        <div class="is_web iq-border"><i class="mdi mdi-facebook text-blue icon-web"></i></div>
+      </a>
+    </div>
+
+    <div>
+      <a title="Twitter" class="socialaccount_provider twitter" href="/accounts/twitter/signup/?process=signup">
+        <div class="is_web iq-border"><i class="mdi mdi-twitter text-info icon-web"></i></div>
+      </a>
+    </div>
+</div>
+</div>
+
+    
+  
+</div>
+
+    
+</div>
+</div>                   
+</div>
+</div>
+
+
+{% endblock %}

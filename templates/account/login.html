@@ -1,0 +1,251 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block title %}{% trans "Sign In" %} | Strerium{% endblock %}
+
+
+{% block content %}
+{% load static %}
+ <form class="login" method="POST" action="{% url 'account_login' %}">
+      {% csrf_token %}
+<div class="uk-height-viewport">
+<section class="feed-item p5t-box">
+    <div class="uk-modal-body  rounded uk-open" uk-overflow-auto="" {% for color in color %} style="background-color:{{color.color}} !important;min-height: 150px; max-height: 472px;" {% endfor %}>
+      <div class="uk-width-1-1@m  rounded-lg pt-0">
+    
+
+    <div class="uk-flex uk-flex-center">
+      <p class="uk-text-large"> <span id="greeting"></span>, {% trans "Welcome back" %}</p>
+    </div>
+
+
+
+     <div class=" uk-animation-slide-bottom-medium ">
+
+        <div class="my-4 uk-text-center" style="padding-top: 20pt;">
+            <p class="my-2">Don`t you have an  account ?
+            <a href="{% url 'account_signup'%}" class="text-blue">Sign up !</a> </p>
+            </div>
+
+                <div class="my-4 ">
+
+
+
+
+                    {% for message in messages %}
+                    <div class="uk-alert-primary rounded" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p class="text-red uk-text-center uk-text-bold">Login Failed</p>
+                    <p class="uk-text-meta">
+                        <ul class="uk-text-small">
+                    <li><span>Is <b>Caps Lock</b> on?</span></li>
+                    <li><span>Maybe you are using the wrong <b>input language</b>? (e.g. German vs. English)</span></li>
+                    <li><span>Try typing your password in a text editor and then <b>copying and pasting</b> it into the "Password" field.</span></li>
+                    <li><span>Check if the username you are typing is as it should be <b>(e.g. @Jobs shouldbe @Jobs <span class="uk-text-danger">not</span> @job or @JOB</b> Username should always be as it was registered as.</span></li>
+                  </ul>
+                    <a href="{% url 'password_reset' %}" class="text-black">Trouble logging in ?</a></p>
+                    </div>
+                    {% endfor %}
+
+
+
+                    
+
+
+                    
+
+
+                    
+
+
+      {{ form.as_p }}
+
+
+      <style type="text/css">
+        input{
+    max-width: 100%;
+    width: 100%;
+    border: 0 none;
+    padding: 0px 0px;
+    background: #fff;
+    color: #666;
+    /* font-weight: 600; */
+    border: 2px solid #eceff5;
+    border-radius: 7px;
+    transition: 0.2s ease-in-out;
+    transition-property: color, background-color, border;
+
+    padding-left: 7px !important;
+    padding-right: 75px !important;
+
+        height: 43px;
+    vertical-align: middle;
+    display: inline-block;
+        }
+      </style>
+
+
+
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+                    
+
+                    
+                    
+
+                    
+                </div>
+
+                
+            </div>  
+
+
+             <!-- Qt Footer -->
+    <footer class="main-foa uk-flex uk-flex-middle">
+
+   <div class="uk-width-1-1">
+
+    <button type="submit" class="button info rounded-lg large block mb-4"> {% trans "Sign In" %} </button>
+
+
+
+        <p class="uk-text-center my-4" style="padding-top: 12px; padding-bottom: 12px;">
+                        Forgot your login details ?
+                    <a href="{% url 'account_reset_password' %}" >
+                    <label class="text-blue">Get help</label>
+                    </a>
+                    </p>
+        
+     </div>   
+        
+    </footer>
+
+
+
+
+
+
+
+
+
+
+<div class="uk-padding-small iq-border uk-hidden rounded-lg uk-text-center" style="margin-top: 30pt!important; margin-bottom: 20pt !important;">
+  
+
+
+
+
+
+    
+
+    {% get_providers as socialaccount_providers %}
+
+    {% if socialaccount_providers %}
+    <p>
+    {% blocktrans with site.name as site_name %}
+      Authenticate via:
+    {% endblocktrans %}
+    </p>
+
+<div class="uk-flex uk-flex-center" style="padding-bottom: 10px; padding-top: 7px;">
+<div class="uk-child-width-1-4 uk-child-width-1-4@m uk-text-center uk-grid-medium  uk-grid" uk-grid>
+    <div>
+      <a title="Google" class="socialaccount_provider google" href="/accounts/google/login/?process=login">
+        <div class="is_web iq-border">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 48 48" class="LgbsSe-Bz112c"><g><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></g></svg>
+        </div>
+      </a>
+    </div>
+    <div>
+      <a title="Apple" class="socialaccount_provider apple" href="/accounts/apple/login/?process=login">
+        <div class="is_web iq-border"><i class="mdi mdi-apple icon-web"></i></div>
+      </a>
+    </div>
+    <div>
+      <a title="Facebook" class="socialaccount_provider facebook" href="/accounts/facebook/login/?process=login">
+        <div class="is_web iq-border"><i class="mdi mdi-facebook text-blue icon-web"></i></div>
+      </a>
+    </div>
+
+    <div>
+      <a title="Twitter" class="socialaccount_provider twitter" href="/accounts/twitter/login/?process=login">
+        <div class="is_web iq-border"><i class="mdi mdi-twitter text-info icon-web"></i></div>
+      </a>
+    </div>
+</div>
+</div>
+
+    <div class="socialaccount_ballot uk-hidden">
+
+      <ul class="socialaccount_providers">
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+      </ul>
+
+
+    </div>
+
+    {% include "socialaccount/snippets/login_extra.html" %}
+
+    {% else %}
+    <p>{% blocktrans %}If you have not created an account yet, then please
+    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+    {% endif %}
+  
+</div>
+
+
+    
+</div>
+</div>
+
+</section>
+</div>
+        
+
+<script type="text/javascript">
+                                    function clock(){
+                                        var date = new Date();
+                                        var hours = date.getHours();
+                                        var minutes = date.getMinutes();
+                                        var midday;
+
+                                        hours = updateTime(hours);
+                                        minutes = updateTime(minutes);
+                                        var name = "{{ user.username |truncatechars:20 }}";
+
+                                        midday = (hours > 12) ? "PM" : "AM";
+
+                                        var time = setTimeout(function(){
+                                            clock();
+                                        }, 1000);
+
+                                        if(hours < 12){
+                                            var greeting = "Good Morning" + " " + " ! ";
+                                        }
+                                        if(hours >= 12 && hours <= 18){
+                                            var greeting = "Good Afternoon" + " " + " ! ";
+                                        }
+                                        if(hours >= 18 && hours <= 24){
+                                            var greeting = "Good Evening" + " " + " ! ";
+                                        }
+                                        document.getElementById("greeting").innerHTML = greeting;
+
+                                        function updateTime(k){
+                                            if(k < 10){
+                                                return "0" + k
+                                            } else{
+                                                return k;
+                                            }
+                                        }
+
+                                    }
+                                    clock();
+                                   </script> 
+
+
+</form>
+
+{% endblock %}
