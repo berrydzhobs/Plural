@@ -1,0 +1,104 @@
+{% extends 'Main/Base/base.html' %}
+
+{% block title %}  Discover {% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+
+
+
+
+        <!-- contents -->
+        <div class="uk-container">
+
+            <div>
+    <div class="uk-width-1-3">
+    <p class="font-writer " style="font-size: 39px;">
+         {{ category.name |truncatechars:70 }} 
+     </p>   
+    </div>
+</div>
+
+                    <div class="">
+ 
+          
+
+                  <div class=" ">
+
+                
+                {% if posts %}
+                              
+
+                
+                            <div class="uk-child-width-1-1@m  uk-child-width-1-1@s uk-flex uk-flex-center  uk-child-width-1-1 uk-grid-small  uk-grid" uk-grid="" uk-height-match="target: > div > .uk-card; row: false" >
+                                {% for post in posts %}
+                                <div class="">
+                                <a href="{% url 'post_detail' post.order_id %}">
+                                <div class="uk-grid uk-grid-small" uk-grid="">
+                                    <div class="uk-width-1-2">
+                                        {% if post.category %}
+                                        <p class="" style="color: {{post.category.color}};">
+                                            {{ post.category }}
+                                        </p>
+                                        {% endif %}
+                                        <p class="text-black uk-text-bold" style="font-size: 17px">{{ post.title }}</p>
+                                        <p class="text-primary uk-text-meta uk-text-bold">{{ post.user.first_name }}</p>
+                                            <p>
+                                                <span class="uk-text-meta uk-text-lowercase">
+                                             {{ post.created_at |timesince }}
+                                            </span>
+                                            </p>
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <div class="embed-read rounded uk-background-cover" data-src="{{post.media.url}}" uk-img="" style="background-image: url(&quot;{{post.media.url}}&quot;);">
+                                            
+                                        </div>
+                                    </div>
+                                </div></a></div>
+                                {% endfor %}
+                            </div>
+
+                {% else %}
+
+                <div class="uk-width-1-1@m  rounded  mt-3" uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 500; repeat: true">
+<div class="uk-accordion-content rounded  uk-padding-small" style="background-color:{% for color in color %}{{color.color}}{% endfor %};">
+
+                                          <div class="uk-flex uk-flex-center">
+                               
+
+                <div class="uk-margin-top uk-text-center">
+
+                <i class="mdi mdi-format-list-text icon-xxlarge text-white"></i>
+                <h4 class="my-2 text-white">Empty - No content yet</h4>
+            
+               <p class="uk-margin-top uk-margin-top mb-4 text-white">
+                   Check back later, at this time nothing is available. for us to show you
+               </p>
+
+
+            
+            </div>
+
+                                </div>
+                                        </div>
+</div>
+
+
+                {% endif %} 
+
+
+                  </div>
+
+
+                    </div>
+
+
+                     
+
+        </div>
+
+
+
+{% endblock %}

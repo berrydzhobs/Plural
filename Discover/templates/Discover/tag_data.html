@@ -1,0 +1,79 @@
+{% for tag_data in tag_data %}
+
+{% if forloop.last %}
+
+<div class="post bg-transparent pt-0 pb-0 mb-0"   hx-trigger="revealed" hx-get="{% url 'discover' %}?page={{ tag_data.number|add:1 }}" hx-swap="afterend" hx-target="this">
+{% else%}
+<div class="post bg-transparent  pt-0 pb-0 mb-0">
+{% endif %}
+
+    <div class="post-heading uk-flex uk-flex-middle">
+                                    <div class="post-title ml-0">
+                                        
+                                        <a href="{% url 'tag' tag_data.tag.name %}">
+                                        <h4 class="text-black uk-text-lowercase">
+                                           #{{ tag_data.tag.name }}
+                                            
+                                        </h4>
+                                        </a>
+
+                                        <span class="uk-text-meta">
+                                        {{ tag_data.post_count }} Post(s)
+                                        </span>
+
+                                        
+                                        
+                                        
+                                        
+                                    </div>
+                                    <div class="post-btn-action">
+                                       <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" width="24" height="24" viewBox="0 0 1024 1024" version="1.1"><path d="M698.75712 565.02272l-191.488 225.4848a81.73568 81.73568 0 0 1-62.48448 28.89728 81.89952 81.89952 0 0 1-62.40256-134.94272l146.432-172.4416-146.432-172.4416a81.92 81.92 0 0 1 124.88704-106.06592l191.488 225.4848a81.87904 81.87904 0 0 1 0 106.02496z"/></svg>
+                                       
+                                    </div>
+                                </div>
+
+                                <style type="text/css">
+                                      @media only screen and (max-width: 1024px){
+                                            .t4g-box {
+                                              padding-left: 0px !important;
+                                              padding-right: 0px !important;
+                                            }
+                                            }
+                                </style>
+
+                                <div class="post-description t4g-box p5t-media">
+                                    <div class="uk-child-width-1-3 t4g-box  uk-grid-dsmall uk-overflow-hidden uk-grid" uk-grid="">
+                                {% for post in tag_data.posts %}
+                                {% if post.is_image %}
+                                <div class=""> <a href="{% url 'post_detail' post.order_id %}">
+                                        <div class="embed-video uk-background-cover small" data-src="{{ post.media.url }}" uk-img="" style="background-image: url(&quot;{{ post.media.url }}&quot;);">
+                                        </div>
+                                    </a>
+                                </div>
+                                {% elif post.is_video %}
+                                <div class=""> <a href="{% url 'post_detail' post.order_id %}">
+                                        <div class="embed-video uk-background-cover small" data-src="{{ post.thumbnail.url }}" uk-img="" style="background-image: url(&quot;{{ post.thumbnail.url }}&quot;);">
+                                        </div>
+                                    </a>
+                                </div>
+                                {% else %}
+                                <div class=""> <a href="{% url 'post_detail' post.order_id %}">
+                                        <div class="embed-video uk-background-cover small" data-src="{{ post.media.url }}" uk-img="" style="background-image: url(&quot;{{ post.media.url }}&quot;);">
+                                        </div>
+                                    </a>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+
+
+                            </div>
+                                </div>
+
+                                <div>
+                           
+                                </div>
+
+
+
+                            </div>
+  {% endfor %}
