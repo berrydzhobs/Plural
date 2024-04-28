@@ -1,0 +1,64 @@
+{% load static %}
+{% load humanize %}
+
+{% load topic %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    {% include  "Main/Base/meta-links.html" %}
+    <meta name="author" content="Muli Berry Dzhobs">
+     <meta name="website" content="https://github.com/berrydzhobs">
+    {% include  "Main/Base/header-links.html" %}
+
+</head>
+
+<body>
+
+<div id="wrapper" class="">
+
+{% include  "Main/Base/sidebar.html" %}
+<div class="main_content pt-0 pb-0">
+
+{% include  "Main/Base/app-header.html" %}
+
+
+<div uk-height-viewport="" class="uk-height-viewport " style="margin-top: 17px;" >
+
+
+
+
+
+<div class="uk-container pt-3">
+{% block content %}
+
+
+
+
+
+
+{% endblock %}
+</div>
+
+
+
+    
+</div>
+ {% include  "Main/Base/Include/footer.html" %}
+</div>
+
+
+
+</div>
+
+
+
+{% include  "Main/Base/footer-links.html" %}
+</body>
+</html>

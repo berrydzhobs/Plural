@@ -1,0 +1,46 @@
+{% for post in posts %}
+
+
+<div class=""  hx-trigger="revealed" hx-get="{% url 'feed' %}?page={{ posts.number|add:1 }}" hx-swap="afterend" hx-target="this">
+
+
+        
+
+            <div class="uk-first-column">
+                                        <div class="list-items">
+                                            <a href="{% url 'post' post.user.username post.order_id %}">
+                                            <div class="list-item-media mt-0">
+                                                <img src="{{post.icon.url}}" alt="" class="iq-border">
+                                            </div>
+                                            </a>
+                                            <div class="list-item-content">
+                                                <a href="{% url 'post' post.user.username post.order_id %}">
+                                                    <p class="text-black uk-text-bold ">{{ post.name }}</p>
+                                                </a>
+                                                {% if post.category %}
+                                                <p class="text-grey">{{ post.category }}</p>
+                                                {% endif %}
+                                            </div>
+                                            <div class="uk-width-auto uk-hidden">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+    
+                               
+
+</div>
+
+{% empty %}
+
+<div class=" ">
+
+                <p class="uk-text-bold">
+                    No data
+                </p>
+
+
+        </div>
+        
+{% endfor %}
+

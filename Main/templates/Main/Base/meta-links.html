@@ -1,0 +1,6 @@
+<!-- Browser color -->
+{% if color %}
+<meta name="theme-color" content="{% for color in color %}{{color.color}}{% endfor %}">
+<meta name="apple-mobile-web-app-status-bar-style" content="{% for color in color %}{{color.color}}{% endfor %}">
+{% else %}
+{% endif %}

@@ -1,0 +1,56 @@
+{% load static %}
+
+
+{% if request.user.is_authenticated %}
+
+                 <a href="#Create" uk-toggle class=" is_icon  mr-3 uk-visible@m " uk-tooltip="title:Create; pos: bottom ;offset:7;">
+                    <i class="mdi mdi-plus icon-web "></i></a>
+
+
+<a href="" class=" mr-3 is_icon  uk-visible@m" uk-tooltip="title:Status; pos: bottom ;offset:7;"> 
+<i class="mdi-resistor mdi icon-web"></i>
+</a>
+                     <div class="opts_account uk-visible@m" >
+                    <img src="{{ user.profile.picture.url }}" alt="">
+                    </div>
+
+                     <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small" class="dropdown-notifications rounded uk-dropdown uk-dropdown-bottom-right" style="left: 949px; top: 45.5px;">
+
+                            <!-- User Name / Avatar -->
+
+                            <ul class="dropdown-user-menu">
+                                <li class="mt-3"><a href="https://page.strerium.com/account"> 
+                                     <i class="icon-feather-external-link text-black"></i>
+                    
+                                    <div> Account <span class="mt-0"> Manage Account</span> </div>
+                                </a>
+                                </li>
+                                <li><a href="{% url 'profile' user.username %}"> 
+                                    <i class="icon-feather-user text-black"></i>
+                    
+                                    <div> Profile <span class="mt-0">{{ user.first_name |truncatechars:20 }} </span> </div>
+                                </a>
+                                </li>
+
+                                <li><a href="https://page.strerium.com/premium"> <i class="uil-bolt text-black"></i>
+                                    <div> Upgrade To Premium <span class="mt-2"> Pro features give you full control </span> </div>
+                                </a>
+                                </li>
+                                
+                                <li><a href="{% url 'settings' %}"> <i class="icon-feather-settings text-black"></i> Settings </a> </li>
+
+                                <li><a href="{% url 'logout' %}"> <i class="mdi-logout-variant text-black is_icon mdi"></i> Logout </a> </li>
+
+                            </ul>
+
+                        </div>
+
+                       
+                        {% else %}
+
+
+                        <a href="{% url 'login' %}" class="button dark uk-visible@m ">
+                            Subscribe
+                        </a>
+
+                        {% endif %}

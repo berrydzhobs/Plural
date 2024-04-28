@@ -1,0 +1,33 @@
+{% if topics %}
+
+                    <div class="sidebar_innr">
+                                        <div class="sections">
+                                        <p class="uk-text-meta" style="margin-left: 7rem !important;">
+                                            Categories
+                                        </p>
+                        <ul>
+                            
+
+                    {% for topic in topics %}
+
+                    <li> <a href="{% url 'topic' topic.order_id %}">
+                        <i class="{{ topic.icon }} "></i>
+                        <span> {{ topic.name |truncatechars:25 |escape}} </span>
+                    </a>
+                    </li>
+
+                     {% endfor %}
+                           
+
+
+                        </ul>
+
+                        <a href="{% url 'discover' %}" class="button secondary px-5 btn-more " style="margin-top: 12px;" uk-toggle="target: #more-veiw; animation: uk-animation-fade">
+                            <span><i class="icon-feather-chevron-down"></i></span>
+                        </a>
+
+                    </div>
+
+                        
+                </div>
+{% endif %}

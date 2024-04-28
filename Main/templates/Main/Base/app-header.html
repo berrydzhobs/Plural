@@ -1,0 +1,233 @@
+<header class="main-header   {% if request.resolver_match.url_name != 'feednn' %} bg-transparent pdw {% endif %}  uk-flex uk-flex-middle   ">
+        <div class="uk-width-1-1 ">
+      <div class="section-header uk-flex uk-flex-middle pt-0 pb-0">
+          <div class="section-header-left uk-flex uk-flex-middle">
+        {% if request.resolver_match.url_name != 'feed' %}
+            <a onclick="window.history.go(-1); return false;"  class="mr-7" uk-tooltip="title:Back; pos: bottom ;offset:7;">
+                          <svg class="Hn_ gUZ R19 U9O kVc" height="16" width="16" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img"><path d="M17.28 24c-.57 0-1.14-.22-1.58-.66L4.5 12 15.7.66a2.21 2.21 0 0 1 3.15 0c.87.88.87 2.3 0 3.18L10.79 12l8.06 8.16c.87.88.87 2.3 0 3.18-.44.44-1 .66-1.57.66"></path></svg>
+            </a>
+        {% endif %}
+
+        {% if request.resolver_match.url_name == 'feed' %}
+        <p class="text-black uk-logo">Home</p>
+        {% elif request.resolver_match.url_name == 'thread' %} 
+
+                        {% if thread.receiver == request.user %}
+
+                        <a href="{% url 'profile' thread.user.username %}" class="">
+                                  
+                        <img src="{{ thread.user.profile.picture.url }}" alt="" class="is_icon_small" style="object-fit: cover;" >
+                                  
+                        </a>
+                        {% else %}
+                        <a href="{% url 'profile' thread.receiver.username %}" class="">
+                                  
+                        <img src="{{ thread.receiver.profile.picture.url }}" alt=""  class="is_icon_small"  style="object-fit: cover;" >
+                                  
+                        </a>
+                        {% endif %}
+                        {% if thread.receiver == request.user %}
+                        <a href="{% url 'profile' thread.user.username %}" class="opts_icon_link ml-2 font-weight-bold  text-black" uk-tooltip="title:@{{ thread.user }}; pos: bottom ;offset:7;">
+                          
+                          <span class="text-black  uk-text-meta uk-text-lowercase">{{ thread.user }}</span>
+
+                        </a>
+                        {% else %}
+                        
+                        <a href="{% url 'profile' thread.receiver.username %}" class="opts_icon_link ml-2 font-weight-bold  text-black" uk-tooltip="title:@{{ thread.receiver }}; pos: bottom ;offset:7;">
+                          
+                          <span class="text-black  uk-text-meta uk-text-lowercase">{{ thread.receiver }}</span>
+
+                        </a>
+                        {% endif %}
+
+
+            
+                        {% elif request.resolver_match.url_name == 'feedn' %} 
+                        <p class="text-black uk-logo">Following</p>
+                        
+                        {% elif request.resolver_match.url_name == 'post_comment' %} 
+                        <p class="text-black uk-logo">Comment</p>
+                        {% elif request.resolver_match.url_name == 'discover' %}
+
+                        <p class="text-black uk-logo">Discover</p>
+
+                        {% elif request.resolver_match.url_name == 'settings' %}
+
+                        <p class="text-black uk-logo">Settings</p>
+                        {% elif request.resolver_match.url_name == 'create_post' %}
+
+                        <p class="text-black uk-logo">New<span class="uk-text-lowercase"> post</span></p>
+
+                        {% elif request.resolver_match.url_name == 'library' %}
+
+                        <p class="text-black uk-logo">Library</p>
+
+                        {% elif request.resolver_match.url_name == 'menu' %}
+
+                        <p class="text-black uk-logo">Menu</p>
+
+                        {% elif request.resolver_match.url_name == 'post_detail' %}
+
+                        <p class="text-black uk-logo">Article</p>
+
+                        {% elif request.resolver_match.url_name == 'post_comment_thread' %}
+
+                        <p class="text-black uk-logo">Post Comments</p>
+
+                        {% elif request.resolver_match.url_name == 'post_comment' %}
+
+                        <p class="text-black uk-logo">Comment</p>
+
+                        {% elif request.resolver_match.url_name == 'tag' %}
+
+                        <p class="text-black uk-logo">Tag</p>
+
+                        {% elif request.resolver_match.url_name == 'inbox' %}
+
+                        <p class="text-black uk-logo">Chat</p>
+
+                        {% elif request.resolver_match.url_name == 'notifications' %}
+
+                        <p class="text-black uk-logo">Notifications</p>
+
+                        {% elif request.resolver_match.url_name == 'profile' %}
+                        <p class="text-black uk-text-lowercase uk-logo" style="font-weight: 100;">{{ profile.user.username |truncatechars:20 }}</p>
+                        {% elif request.resolver_match.url_name == 'profile-videos' %}
+                        <div class="uk-flex uk-flex-middle">
+                        <p class="text-black uk-logo">Profile</p>
+                        </div>
+                        {% elif request.resolver_match.url_name == 'profile-audios' %}
+                        <a href="{% url 'feed' %}" class="opts_icon_link uk-visible@m " uk-tooltip="title:Go to home; pos: bottom ;offset:7;">{{ object.user.username }}</a>
+                        <a href="#" class="uk-hidden@m" uk-tooltip="title:Main Home; pos: bottom ;offset:7;" style="margin-top: -0.5em;">
+                        <span class="uk-text-bold ">{{ object.user.username |truncatechars:30 }}</span>
+                        </a>
+                        {% elif request.resolver_match.url_name == 'profile-notes' %}
+                        <a href="{% url 'feed' %}" class="opts_icon_link uk-visible@m " uk-tooltip="title:Go to home; pos: bottom ;offset:7;">{{ object.user.username }}</a>
+                        <a href="#" class="uk-hidden@m" uk-tooltip="title:Main Home; pos: bottom ;offset:7;" style="margin-top: -0.5em;">
+                        <span class="uk-text-bold ">{{ object.user.username |truncatechars:30 }}</span>
+                        </a>
+                        {% elif request.resolver_match.url_name == 'profile-images' %}
+                        <a href="{% url 'feed' %}" class="opts_icon_link uk-visible@m " uk-tooltip="title:Go to home; pos: bottom ;offset:7;">{{ object.user.username }}</a>
+                        <a href="#" class="uk-hidden@m" uk-tooltip="title:Main Home; pos: bottom ;offset:7;" style="margin-top: -0.5em;">
+                        <span class="uk-text-bold ">{{ object.user.username |truncatechars:30 }}</span>
+                        </a>
+                        {% elif request.resolver_match.url_name == 'terms' %}
+
+                        <p class="text-black uk-logo">Terms</p>
+                        {% elif request.resolver_match.url_name == 'privacy' %}
+
+                        <p class="text-black uk-logo">Privacy</p>
+                        {% elif request.resolver_match.url_name == 'cookies' %}
+
+                        <p class="text-black uk-logo">Cookie Policy</p>
+                        {% elif request.resolver_match.url_name == 'disclaimer' %}
+
+                        <p class="text-black uk-logo">Disclaimer</p>
+
+                        {% elif request.resolver_match.url_name == 'login' %}
+
+                        <p class="text-black uk-logo">Authenticate</p>
+                        {% else %}
+
+                        <p class="text-black uk-logo">Back</p>
+
+                        {% endif %}
+ 
+          </div>
+          <div class="section-header-right uk-flex uk-flex-middle">
+
+{% if request.user.is_authenticated %}
+           
+
+
+            <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small uk-hidden" class="dropdown-notifications  rounded uk-dropdown uk-dropdown-bottom-right uk-box-shadow-large iq-border" style="left: 949px; top: 45.5px;">
+                <div class="dropdown-notifications-headline">
+                                <h6> Family apps </h6>
+                                <a href="https://strerium.com/l/apps/" class="">
+                                    <i class="icon-feather-chevron-right" uk-tooltip="title: See all ; pos: left" title="" aria-expanded="false"></i>
+                                </a>
+                            </div>
+
+                            <!-- User Name / Avatar -->
+
+                            <ul class="dropdown-user-menu">
+
+                                <li><a href="https://strerium.com/"> <i class="icon-feather-external-link text-black"></i>
+                                    <div> Strerium.com <span class="mt-2 text-primary"> Learn Entrepreneurship </span> </div>
+                                </a>
+                                </li>
+
+                                <li><a href="#"> <i class="icon-material-outline-flight text-black"></i>
+                                    <div> Letravel.com <span class="mt-2 text-primary"> comming soon </span> </div>
+                                </a>
+                                </li>
+
+                                <li><a href="#"> <i class="icon-line-awesome-user-secret text-black"></i>
+                                    <div> Pythacker.com <span class="mt-2 text-primary"> comming soon </span> </div>
+                                </a>
+                                </li>
+                                
+                            </ul>
+
+                        </div>
+
+
+           
+
+            
+                     <div class="uk-visible@m"  >
+                        <a>
+                        {% if request.resolver_match.url_name == 'profile' %}
+                    <svg width="32" height="32" viewBox="0 0 48 48" fill="#000" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M24.0003 8.5C19.3059 8.5 15.5003 12.3056 15.5003 17C15.5003 21.6944 19.3059 25.5 24.0003 25.5C28.6947 25.5 32.5003 21.6944 32.5003 17C32.5003 12.3056 28.6947 8.5 24.0003 8.5ZM24.0003 27.5C17.824 27.5 13.0161 31.3744 11.0087 36.877C10.5186 38.2204 11.5522 39.5363 12.88 39.5363H35.1186C36.4468 39.5363 37.4805 38.2196 36.9896 36.876C34.9805 31.3773 30.1772 27.5 24.0003 27.5Z"></path></svg>
+                    {% else %}
+                    <svg width="32" height="32" viewBox="0 0 48 48" fill="#000" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M24.0001 11.5C20.9625 11.5 18.5001 13.9624 18.5001 17C18.5001 20.0376 20.9625 22.5 24.0001 22.5C27.0377 22.5 29.5001 20.0376 29.5001 17C29.5001 13.9624 27.0377 11.5 24.0001 11.5ZM15.5001 17C15.5001 12.3056 19.3057 8.5 24.0001 8.5C28.6945 8.5 32.5001 12.3056 32.5001 17C32.5001 21.6944 28.6945 25.5 24.0001 25.5C19.3057 25.5 15.5001 21.6944 15.5001 17ZM24.0001 30.5C19.1458 30.5 15.0586 33.7954 13.8578 38.2712C13.7147 38.8046 13.2038 39.1741 12.6591 39.0827L11.6729 38.9173C11.1282 38.8259 10.7571 38.3085 10.8888 37.7722C12.3362 31.8748 17.6559 27.5 24.0001 27.5C30.3443 27.5 35.664 31.8748 37.1114 37.7722C37.2431 38.3085 36.872 38.8259 36.3273 38.9173L35.3411 39.0827C34.7964 39.1741 34.2855 38.8046 34.1424 38.2712C32.9416 33.7954 28.8544 30.5 24.0001 30.5Z"></path></svg>
+                    {% endif %}
+                    </a>
+                    <img src="{{ user.profile.picture.url }}" alt="" class="is_icon uk-hidden">
+                    </div>
+
+                    <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small" class="dropdown-notifications rounded uk-dropdown uk-dropdown-bottom-right uk-box-shadow-large iq-border" style="left: 949px; top: 45.5px;">
+
+                            <!-- User Name / Avatar -->
+
+                            <ul class="dropdown-user-menu" style="padding-top: 12px;">
+                                <li><a href="{% url 'profile' user.username %}"> 
+                                    <i class="icon-feather-user text-black"></i>
+                    
+                                    <div> Profile <span class="mt-0">{{ user.first_name |truncatechars:20 }} </span> </div>
+                                </a>
+                                </li>
+                                
+                                <li><a href="{% url 'settings' %}"> <i class="icon-feather-settings text-black"></i> Settings </a> </li>
+
+                                <li><a href="{% url 'logout' %}"> <i class="icon-feather-log-out text-black is_icon"></i> Logout </a> </li>
+
+                            </ul>
+
+                        </div>
+
+                        {% else %}
+
+                        <a href="{% url 'account_login' %}" class="button dark medium">
+                          Signin
+                        </a> 
+                        
+
+                        {% endif %}
+
+                        <a href="{% url 'menu' %}" class="uk-hidden@m" style="margin-left: 17px;"  >
+               <svg aria-label="Settings" class="_ab6-" color="#000000" fill="#000000" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="3" x2="21" y1="4" y2="4"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="3" x2="21" y1="12" y2="12"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="3" x2="21" y1="20" y2="20"></line></svg>
+            </a> 
+
+         
+            
+
+            
+            
+          </div>
+          </div>
+      </div>
+    </header>
+
+
