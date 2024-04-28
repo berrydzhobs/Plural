@@ -1,0 +1,199 @@
+{% extends 'Main/Base/base.html' %}
+
+{% block title %}  Settings {% endblock %}
+
+{% block content %}
+{% load static %}
+            
+<div class="rounded-lg">
+   
+       <div class="uk-container">
+
+
+                <div class="post bg-transparent pt-0 pb-0">
+                <div class="post-heading uk-flex uk-flex-middle">
+                                    <div class="post-avature ">
+                                        <a href="/@elonmusk/" class="">
+                                        <i class="mdi mdi-shield-half-full icon-web"></i>
+                                        </a>
+                                    </div>
+                                    <div class="post-title">
+                                        <h4 class="text-black">
+                                          General Settings
+                                            
+                                        </h4>
+                                        
+                                        
+                                        
+                                    </div>
+                                    <div class="post-btn-action uk-flex uk-flex-middle">
+                                        
+    <a href="{% url 'general-settings' %}" class="button text-white primary small" >Manage</a>
+
+                                       
+                                    </div>
+                                </div>
+
+
+                                <div class="post-description">
+                                    <div class="uk-child-width-1-3 uk-grid-collapse uk-overflow-hidden uk-grid-match uk-grid uk-grid-stack" style="border-radius: 5px;" uk-grid="">
+                        
+                                
+
+                            </div>
+                                </div>
+
+                                <div>
+                           
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+        <div class="post bg-transparent pt-0 pb-0">
+                <div class="post-heading uk-flex uk-flex-middle">
+                                    <div class="post-avature ">
+                                        <a href="/@elonmusk/" class="">
+                                        <i class="mdi mdi-account-key icon-web"></i>
+                                        </a>
+                                    </div>
+                                    <div class="post-title">
+                                        <h4 class="text-black">
+                                          Profile Settings
+                                            
+                                        </h4>
+                                        
+                                        
+                                        
+                                    </div>
+                                    <div class="post-btn-action uk-flex uk-flex-middle">
+                                        
+    <a href="{% url 'edit_profile' %}" class="button text-white primary small" >Manage</a>
+
+                                       
+                                    </div>
+                                </div>
+
+
+                                <div class="post-description">
+                                    <div class="uk-child-width-1-3 uk-grid-collapse uk-overflow-hidden uk-grid-match uk-grid uk-grid-stack" style="border-radius: 5px;" uk-grid="">
+                        
+                                
+
+                            </div>
+                                </div>
+
+                                <div>
+                           
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+        <div class="post bg-transparent pt-0 pb-0">
+                <div class="post-heading uk-flex uk-flex-middle">
+                                    <div class="post-avature ">
+                                        <a href="/@elonmusk/" class="">
+                                         <i class="mdi mdi-lock icon-web"></i>
+                                        </a>
+                                    </div>
+                                    <div class="post-title">
+                                        <h4 class="text-black">
+                                          Change password
+                                            
+                                        </h4>
+                                        
+                                        
+                                        
+                                    </div>
+                                    <div class="post-btn-action uk-flex uk-flex-middle">
+                                        
+   <a href="{% url 'security-settings' %}" class="button text-white primary small" >Manage</a>
+
+                                       
+                                    </div>
+                                </div>
+
+
+                                <div class="post-description">
+                                    <div class="uk-child-width-1-3 uk-grid-collapse uk-overflow-hidden uk-grid-match uk-grid uk-grid-stack" style="border-radius: 5px;" uk-grid="">
+                        
+                                
+
+                            </div>
+                                </div>
+
+                                <div>
+                           
+                                </div>
+
+
+
+                            </div>
+
+
+
+                <div class="post bg-transparent pt-0 pb-0">
+                <div class="post-heading uk-flex uk-flex-middle">
+                                    <div class="post-avature ">
+                                        <a href="/@elonmusk/" class="">
+                                         <i class="mdi mdi-trash-can text-red icon-web"></i>
+                                        </a>
+                                    </div>
+                                    <div class="post-title">
+                                        <h4 class="text-black">
+                                          Delete Account
+                                            
+                                        </h4>
+                                        
+                                        
+                                        
+                                    </div>
+                                    <div class="post-btn-action uk-flex uk-flex-middle">
+                                        
+   <a href="{% url 'delete-settings' %}" class="button text-white primary small" >Manage</a>
+
+                                       
+                                    </div>
+                                </div>
+
+
+                                <div class="post-description">
+                                    <div class="uk-child-width-1-3 uk-grid-collapse uk-overflow-hidden uk-grid-match uk-grid uk-grid-stack" style="border-radius: 5px;" uk-grid="">
+                        
+                                
+
+                            </div>
+                                </div>
+
+                                <div>
+                           
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+            
+          
+
+
+
+    </div>
+</div>
+
+{% endblock %}

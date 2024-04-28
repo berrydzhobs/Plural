@@ -1,0 +1,47 @@
+{% extends 'Main/Base/base.html' %}
+
+{% block title %}  Settings {% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+<!-- contents -->
+
+
+<div class="uk-container">
+<div class="uk-grid-large uk-grid" uk-grid="">
+               
+
+                    <!-- sidebar -->
+                    <div class="uk-width-1-1@m">
+
+
+
+                               <p class="text-black uk-heading-large uk-text-bold" style="color:red !important;">Delete Account</p>
+
+                                 
+                                    <form method="POST" role="form" >
+                                    <p> You are about to delete your Strerium account. keep in mind that everything you have added will be wiped out and it can not be retrived back </p>
+                                    <p> If you are happy with that. enter the password to terminate your account</p>
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <div class="uk-child-width-expand uk-grid uk-text-meta mt-4 " uk-grid>
+        <div>
+        <a href="#" onclick="window.history.go(-1); return false;">
+        <button class="button large rounded soft-primary block mb-4">Cancel</button>
+        </a>
+        </div>                
+        <div>
+        <button type="submit" class="button primary rounded large block mb-4">Delete</button>
+        </div>
+        
+                 </div>
+                                </form>
+                                 
+
+
+
+                    </div>
+                </div>
+{% endblock %}

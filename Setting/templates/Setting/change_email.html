@@ -1,0 +1,63 @@
+{% extends 'Main/Base/base.html' %}
+
+{% block title %}  Settings {% endblock %}
+
+{% block content %}
+{% load static %}
+
+<!-- contents -->
+
+
+<div class="uk-container">
+<div class="uk-grid-large uk-grid" uk-grid="">
+               
+
+                    <!-- sidebar -->
+                    <div class="uk-width-1-2@m">
+
+                        <div class="uk-container ">
+<div class="section-header  pt-3 pb-3">
+          <div class="section-header-left m-auto uk-flex uk-flex-middle">
+          <a onclick="window.history.go(-1); return false;" href="#" class="pt-2">
+    <i class="mdi-arrow-left is_icon bg-pH mdi icon-m " style="color:#ffa600;"></i>
+ </a>
+          </div>
+          </div>
+
+
+                    </div>
+
+
+
+
+                                <h3>Settings</h3>
+
+                               <p class="text-black uk-heading-xlarge uk-text-bold" style="color:#c2a55d !important;">Email</p>
+
+                                 
+                                    <form method="POST" role="form" >
+                                    <div class="uk-accordion-content bg-pH uk-padding-small rounded-sm" aria-hidden="false">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    </div>
+                                    <div class="uk-child-width-expand uk-grid uk-text-meta mt-4 " uk-grid>
+        <div>
+        <a href="#" onclick="window.history.go(-1); return false;">
+        <button class="button large rounded soft-primary block mb-4">Cancel</button>
+        </a>
+        </div>                
+        <div>
+        <button type="submit" class="button primary rounded large block mb-4">Save</button>
+        </div>
+        
+                 </div>
+                                </form>
+                                 
+
+
+
+                    </div>
+                </div>
+</div>
+
+{% endblock %}
